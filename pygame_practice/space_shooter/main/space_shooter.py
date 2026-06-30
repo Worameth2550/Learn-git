@@ -5,7 +5,7 @@ from random import randint, uniform
 class Player(pygame.sprite.Sprite):#pygame.sprite.Sprite ใช้เพื่อเก็บข้อมูลภาพ และ ตำแหน่ง
     def __init__(self,group):#ใช้สืบทอดและทำเป็น group sprite
         super().__init__(group)
-        self.original_surf = pygame.image.load(join('Python','pygame_practice','space_shooter','main','..','images','player.png')).convert_alpha()
+        self.original_surf = pygame.image.load(join('pygame_practice','space_shooter','images','player.png')).convert_alpha()
         self.image = self.original_surf
         self.rect =  self.image.get_frect(center=(window_width/2,window_height/2))
         self.direction = pygame.Vector2()#ค่าคือ(0,0)
@@ -126,18 +126,19 @@ running = True
 clock = pygame.time.Clock()
 
 #import
-star_surface = pygame.image.load(join('Python','pygame_practice','space_shooter','main','..','images','star.png')).convert_alpha()
-meteor_surf =pygame.image.load(join('Python','pygame_practice','space_shooter','main','..','images','meteor.png')).convert_alpha()
-laser_surf=pygame.image.load(join('Python','pygame_practice','space_shooter','main','..','images','laser.png')).convert_alpha()
-font = pygame.font.Font(join('Python','pygame_practice','space_shooter','main','..','images','Oxanium-Bold.ttf') , 50) #(font,size)
-explosion_frames = [pygame.image.load(join('Python','pygame_practice','space_shooter','main','..','images','explosion',f'{i}.png')).convert_alpha() for i in range(21)]
+star_surface = pygame.image.load(join('pygame_practice','space_shooter','images','star.png')).convert_alpha()
+meteor_surf =pygame.image.load(join('pygame_practice','space_shooter','images','meteor.png')).convert_alpha()
+laser_surf=pygame.image.load(join('pygame_practice','space_shooter','images','laser.png')).convert_alpha()
+font = pygame.font.Font(join('pygame_practice','space_shooter','images','Oxanium-Bold.ttf') , 50) #(font,size)
+explosion_frames = [pygame.image.load(join('pygame_practice','space_shooter','images','explosion',f'{i}.png')).convert_alpha() for i in range(21)]
 #sound
-laser_sound = pygame.mixer.Sound(join('Python','pygame_practice','space_shooter','main','..','audio','laser.wav'))
+laser_sound = pygame.mixer.Sound(join('pygame_practice','space_shooter','audio','laser.wav'))
 laser_sound.set_volume(0.5)
-explosion_sound = pygame.mixer.Sound(join('Python','pygame_practice','space_shooter','main','..','audio','explosion.wav'))
-game_music = pygame.mixer.Sound(join('Python','pygame_practice','space_shooter','main','..','audio','game_music.wav'))
+explosion_sound = pygame.mixer.Sound(join('pygame_practice','space_shooter','audio','explosion.wav'))
+game_music = pygame.mixer.Sound(join('pygame_practice','space_shooter','audio','game_music.wav'))
 game_music.set_volume(0.4)
 game_music.play(loops=running)
+
 #sprite
 all_sprites = pygame.sprite.Group() #เป็นการจัดกลุ่มทุก class ให้อยู่กลุ่มใหญ่ที่สุดคือ all_sprite เมื่อรันคำสั่งจากตัวแปรนี้จะทำให้classที่ถูกเพิ่มเข้าไปทำงานพร้อมกัน
 meteor_sprite = pygame.sprite.Group()
